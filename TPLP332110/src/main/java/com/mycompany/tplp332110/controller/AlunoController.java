@@ -7,6 +7,7 @@ package com.mycompany.tplp332110.controller;
 import com.mycompany.tplp332110.model.Aluno;
 import com.mycompany.tplp332110.model.AlunoDAO;
 import com.mycompany.tplp332110.model.GenericDAO;
+import java.util.List;
 
 /**
  *
@@ -55,4 +56,32 @@ public class AlunoController {
 
         return response;
     }
-}
+    
+    public AlunoResponseDTO remover(Long id) {
+        AlunoResponseDTO response = new AlunoResponseDTO();
+        try {
+            Aluno aluno = alunoDAO.getByID(id);
+
+            if (aluno == null) {
+                response.setSucesso(false);
+                response.setMensagem("Aluno com ID " + id + " não encontrado.");
+                return response;
+            }
+
+            alunoDAO.remove(aluno);
+            response.setSucesso(true);
+            response.setMensagem("Aluno removido com sucesso.");
+        } catch (Exception e) {
+            response.setSucesso(false);
+            response.setMensagem("Erro ao remover aluno: " + e.getMessage());
+        }
+
+        return response;
+    }
+    public List<AlunoResponseDTO> getALL(){
+        
+        
+    
+   // }
+    
+//}
