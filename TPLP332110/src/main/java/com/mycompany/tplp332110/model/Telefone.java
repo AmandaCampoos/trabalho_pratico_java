@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -24,7 +26,18 @@ public class Telefone implements Serializable {
     private Long id;
     private String numero;
     private String tipo; // residencial, celular, etc
+    @ManyToOne
+    @OneToOne
+private Aluno aluno;
     // não esqueça de incluir o aluno
+    
+    public Aluno getAluno() {
+    return aluno;
+}
+
+public void setAluno(Aluno aluno) {
+    this.aluno = aluno;
+}
     
     public Long getId() {
         return id;
