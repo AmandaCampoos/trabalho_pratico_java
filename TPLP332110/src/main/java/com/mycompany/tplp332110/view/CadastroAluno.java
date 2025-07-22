@@ -440,14 +440,8 @@ public class CadastroAluno extends javax.swing.JInternalFrame {
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
         // TODO add your handling code here:
-        SalvarEditarAluno salvarAluno = new SalvarEditarAluno("Cadastrar Aluno");
-        this.desktopPane.add(salvarAluno);
-        salvarAluno.setVisible(true);
-        salvarAluno.toFront();
-        salvarAluno.requestFocus();
-        for (Component component : this.desktopPane.getComponents()) {
-            System.out.println(component.getClass().getName());
-        }
+                                   
+
 
     }//GEN-LAST:event_btnNovoActionPerformed
 

@@ -4,27 +4,23 @@
 
 package com.mycompany.tplp332110;
 
-import com.mycompany.tplp332110.model.EntityManagerFactorySingleton;
-import com.mycompany.tplp332110.model.Telefone;
-import com.mycompany.tplp332110.model.TelefoneDAO;
+import com.mycompany.tplp332110.model.Aluno;
+import com.mycompany.tplp332110.model.AlunoDAO;
 
-/**
- *
- * @author renato   
- */
 public class TPLP332110 {
-
     public static void main(String[] args) {
-        
-        Telefone tf = new Telefone();
-        tf.setNumero("67 3291-9600");
-        tf.setTipo("Trabalho");
-        
-        TelefoneDAO tdao = new TelefoneDAO();
-        Telefone tresult = tdao.add(tf);
-        System.out.println("Número: " + tresult.getNumero());
-        System.out.println("Tipo: " + tresult.getTipo());
-        
-        EntityManagerFactorySingleton.close();
+        try {
+            Aluno aluno = new Aluno();
+            aluno.setNome("Amanda Ximenes");
+            aluno.setEmail("amanda@email.com");
+
+            AlunoDAO dao = new AlunoDAO();
+            dao.add(aluno);
+
+            System.out.println("Aluno inserido com ID: " + aluno.getId());
+        } catch (Exception e) {
+            System.err.println("Erro: " + e.getMessage());
+        }
     }
 }
+

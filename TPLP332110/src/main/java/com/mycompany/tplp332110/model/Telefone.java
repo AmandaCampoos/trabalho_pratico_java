@@ -27,7 +27,6 @@ public class Telefone implements Serializable {
     private String numero;
     private String tipo; // residencial, celular, etc
     @ManyToOne
-    @OneToOne
 private Aluno aluno;
     // não esqueça de incluir o aluno
     

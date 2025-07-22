@@ -7,6 +7,10 @@ package com.mycompany.tplp332110.controller;
 import com.mycompany.tplp332110.model.Aluno;
 import com.mycompany.tplp332110.model.AlunoDAO;
 import com.mycompany.tplp332110.model.GenericDAO;
+import com.mycompany.tplp332110.model.Telefone;
+
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -78,8 +82,42 @@ public class AlunoController {
 
         return response;
     }
-    public List<AlunoResponseDTO> getALL(){
+    
+    public List<AlunoResponseDTO> getAll() {
+    List<AlunoResponseDTO> respostas = new ArrayList<>();
+    List<Aluno> alunos = alunoDAO.getALL();
+
+    if (alunos != null) {
+        for (Aluno aluno : alunos) {
+            AlunoResponseDTO response = new AlunoResponseDTO();
+            response.setId(aluno.getId());
+            response.setNome(aluno.getNome());
+            response.setEmail(aluno.getEmail());
+
+            if (aluno.getTelefones() != null && !aluno.getTelefones().isEmpty()) {
+                response.setTelefones(new ArrayList<>());
+
+                for (Telefone telefone : aluno.getTelefones()) {
+                    TelefoneResponseDTO tdto = new TelefoneResponseDTO();
+                    tdto.setId(telefone.getId());
+                    tdto.setNumero(telefone.getNumero());
+                    tdto.setTipo(telefone.getTipo());
+                    tdto.setId(telefone.getId());
+                   
+                   
+                }
+            }
+
+            response.setSucesso(true);
+            respostas.add(response);
+        }
+    }
+
+    return respostas;
+}
         
+    
+}
         
     
    // }

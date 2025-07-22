@@ -1,12 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.tplp332110.controller;
 
+import java.util.ArrayList;
+
 /**
- *
- * @author amand
+ 
+ * @author Amanda
  */
 public class AlunoResponseDTO {
     private Long id;
@@ -15,6 +13,18 @@ public class AlunoResponseDTO {
     private boolean sucesso;
     private String mensagem;
 
+    // Construtores
+    public AlunoResponseDTO() {}
+
+    public AlunoResponseDTO(Long id, String nome, String email, boolean sucesso, String mensagem) {
+        this.id = id;
+        this.nome = nome;
+        this.email = email;
+        this.sucesso = sucesso;
+        this.mensagem = mensagem;
+    }
+
+    // Getters e Setters
     public Long getId() {
         return id;
     }
@@ -53,5 +63,9 @@ public class AlunoResponseDTO {
 
     public void setMensagem(String mensagem) {
         this.mensagem = mensagem;
+    }
+
+    void setTelefones(ArrayList<Object> arrayList) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
