@@ -1,4 +1,7 @@
-# Trabalho Prático - Sistema de Gestão de Cursos
+## Trabalho Prático: JPA com MVC, Padrões de Projeto e Swing
+### Curso: Sistemas para Internet
+### Professor: Renato Santos
+### Aluna: Amanda Campos Ximenes
 
 ## Objetivo
 Este projeto foi desenvolvido como parte da disciplina de Linguagem de Programação no curso de Sistemas para Internet, com o propósito de aplicar e consolidar os conhecimentos adquiridos ao longo do semestre. Trata-se de uma aplicação desktop acadêmica desenvolvida em Java, utilizando a arquitetura MVC para organizar de forma clara as camadas de modelo, controle e visualização. A persistência de dados é realizada por meio da especificação JPA (Java Persistence API), com a implementação EclipseLink, conectada a um banco de dados MySQL. A interface gráfica da aplicação foi construída com a biblioteca Swing, permitindo a interação do usuário com os cadastros e consultas. O sistema simula um ambiente acadêmico básico, permitindo o gerenciamento de entidades como alunos, cursos, professores, disciplinas, endereços e matrículas. Além disso, o projeto implementa diversos relacionamentos entre entidades, como @OneToOne, @OneToMany, @ManyToOne e @ManyToMany, reforçando a compreensão prática da modelagem de dados com JPA.
