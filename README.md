@@ -123,7 +123,7 @@ Um curso pode ter **vários alunos** (1:N)
 - `cidade_id` (FK → Cidade)
 
 ---
-### 🔹 Tabelas
+###  Tabelas
 | Entidade   | Relacionamento | Com quem         |
 |------------|----------------|------------------|
 | Aluno      | @OneToOne      | Endereco         |
@@ -138,7 +138,7 @@ Um curso pode ter **vários alunos** (1:N)
 
 ##  Requisitos Atendidos
 
-### 📐 Requisitos Arquiteturais
+###  Requisitos Arquiteturais
 
 1. **Singleton**  
    - Usado para gerenciar uma instância única de `EntityManagerFactory`.
@@ -170,7 +170,7 @@ Um curso pode ter **vários alunos** (1:N)
 
 ---
 
-## ⚙️ Observações Técnicas
+##  Observações Técnicas
 
 - As tabelas são criadas automaticamente pelo JPA/EclipseLink, com base nas anotações nas entidades.
 - O gerenciamento do `EntityManager` é feito via `EntityManagerObjectFactory`.
