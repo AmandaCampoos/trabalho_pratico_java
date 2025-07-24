@@ -185,18 +185,113 @@ A camada DAO é responsável pela interação direta com o banco de dados. Ela r
 Exemplo:
 AlunoDAO contém métodos como add(Aluno aluno), update(Aluno aluno), getByID(long id) e getALL(), encapsulando a lógica de acesso ao banco usando JPA (Java Persistence API).
 
+
+Exemplo de código:
+--- 
+```
+public class AlunoDAO implements GenericDAO<Aluno> {
+    private EntityManager em;
+
+    public AlunoDAO(EntityManager em) {
+        this.em = em;
+    }
+
+    @Override
+    public void add(Aluno aluno) {
+        em.getTransaction().begin();
+        em.persist(aluno);
+        em.getTransaction().commit();
+    }
+
+    // outros métodos: update, remove, getById etc.
+}
+```
+
 🧠 Controller
 A camada Controller atua como intermediária entre a interface gráfica (Swing) e a camada de persistência (DAO). É aqui que a lógica de negócio é aplicada, como validações e chamadas encadeadas. Essa separação facilita a manutenção, testabilidade e reuso do código.
+````
+public class AlunoController {
+    private AlunoDAO alunoDAO;
+
+    public AlunoController(EntityManager em) {
+        this.alunoDAO = new AlunoDAO(em);
+    }
+
+    public void cadastrarAluno(AlunoDTO dto) {
+        Aluno aluno = new Aluno();
+        aluno.setNome(dto.getNome());
+        aluno.setEmail(dto.getEmail());
+
+        alunoDAO.add(aluno);
+    }
+}
+
+````
 
 Exemplo:
 AlunoController recebe os dados da view, chama o AlunoDAO para persistir ou atualizar e pode incluir regras adicionais, como verificação de campos obrigatórios ou tratamento de exceções.
 
 📤 DTO (Data Transfer Object)
 A classe DTO serve para transportar dados entre camadas de forma mais controlada, evitando o acoplamento direto entre a interface e a entidade. Embora em alguns casos a entidade JPA possa ser utilizada diretamente, o uso de DTOs torna o projeto mais robusto e preparado para crescer, especialmente em sistemas distribuídos ou APIs REST.
+```
+public class AlunoDTO {
+    private String nome;
+    private String email;
+
+    // Construtor, getters e setters
+}
+
+```
 
 No projeto, DTOs podem ser utilizados para enviar somente os dados necessários entre a interface e o Controller, evitando expor propriedades sensíveis ou irrelevantes da entidade.
 
+## Interface Gráfica com Swing
+---
+O sistema de cadastro de alunos foi desenvolvido utilizando a biblioteca Swing do Java para criação da interface gráfica (GUI). A interface está dividida em telas principais que permitem ao usuário cadastrar, editar, remover e visualizar os alunos com seus respectivos dados.
 
+### Telas Principais
+## 1. Tela de Listagem de Alunos
+
+Essa é a tela inicial do sistema, onde são listados todos os alunos cadastrados. O usuário pode:
+
+- Cadastrar um novo aluno clicando no botão "Novo".
+
+- Editar um aluno selecionado clicando no botão "Editar".
+
+- Excluir um aluno com o botão "Excluir".
+
+- Limpar os campos com o botão "Limpar".
+
+- A tabela na parte inferior exibe os dados dos alunos, como ID, Nome e Email.
+
+## 2. Tela de Cadastro/Edição de Aluno
+
+Esta tela é aberta ao clicar em "Novo" ou "Editar". Permite ao usuário preencher os dados do aluno:
+
+ID (gerado automaticamente),Nome,E-mail,Endereço (logradouro, número, cidade, estado e CEP),Telefone(s), com possibilidade de adicionar mais de um número com tipo e observações.
+
+### Os botões disponíveis são:
+
+- Salvar: envia os dados preenchidos para o controller.
+
+- Cancelar: fecha a tela sem salvar as alterações.
+## Integração entre GUI, Controller e DAO
+A arquitetura segue o padrão MVC (Model-View-Controller):
+
+- View (Swing): A interface gráfica foi construída com componentes do Swing.
+- O usuário interage diretamente com os formulários.
+- Controller: Recebe os dados da view através de DTOs (Data Transfer Objects), realiza validações e chama a camada de persistência (DAO).
+- Por exemplo:Copiar e Editar
+
+
+```
+  AlunoDTO dto = new AlunoDTO();
+dto.setNome(txtNome.getText());
+dto.setEmail(txtEmail.getText());
+
+AlunoResponseDTO response = alunoController.add(dto);
+
+  ```
 
 ## Execução
 
