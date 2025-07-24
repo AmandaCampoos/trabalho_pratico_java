@@ -159,7 +159,7 @@ Um curso pode ter **vários alunos** (1:N)
 
 ---
 
-## 🧱 Entidades Sugeridas no Projeto
+##  Entidades Sugeridas no Projeto
 
 - ✅ Aluno
 - ✅ Curso
@@ -184,7 +184,7 @@ Um curso pode ter **vários alunos** (1:N)
 
 
 ## Organização em Camadas, DAO,Controller e DTO
-🧩 DAO (Data Access Object)
+### DAO (Data Access Object)
 A camada DAO é responsável pela interação direta com o banco de dados. Ela realiza as operações básicas de persistência: inserir, atualizar, remover e consultar entidades. Cada classe DAO implementa a interface GenericDAO<T>, garantindo um padrão comum para todas as entidades do sistema.
 
 Exemplo:
@@ -211,8 +211,7 @@ public class AlunoDAO implements GenericDAO<Aluno> {
     // outros métodos: update, remove, getById etc.
 }
 ```
-
-🧠 Controller
+### Controller
 A camada Controller atua como intermediária entre a interface gráfica (Swing) e a camada de persistência (DAO). É aqui que a lógica de negócio é aplicada, como validações e chamadas encadeadas. Essa separação facilita a manutenção, testabilidade e reuso do código.
 ````
 public class AlunoController {
@@ -236,7 +235,7 @@ public class AlunoController {
 Exemplo:
 AlunoController recebe os dados da view, chama o AlunoDAO para persistir ou atualizar e pode incluir regras adicionais, como verificação de campos obrigatórios ou tratamento de exceções.
 
-📤 DTO (Data Transfer Object)
+### DTO (Data Transfer Object)
 A classe DTO serve para transportar dados entre camadas de forma mais controlada, evitando o acoplamento direto entre a interface e a entidade. Embora em alguns casos a entidade JPA possa ser utilizada diretamente, o uso de DTOs torna o projeto mais robusto e preparado para crescer, especialmente em sistemas distribuídos ou APIs REST.
 ```
 public class AlunoDTO {
@@ -308,6 +307,19 @@ dto.setEmail(txtEmail.getText());
 AlunoResponseDTO response = alunoController.add(dto);
 
   ```
+## Versionamento 
+Durante o desenvolvimento foi utilizado o Git e GitHub como ferramenta de apoio durante o desenvolvimento do trabalho com o intuito de manter o histórico dos códigos. 
+- A estrutura do repositório foi organizada em pastas separadas por camadas (model, controller, dao, view).
+
+## Dificuldade enfrentadas
+| Dificuldade                                                             | Solução Adotada                                                                                                          |
+| ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| Compreender o funcionamento das classes do projeto                      | Estudei o padrão MVC e analisei exemplos práticos para entender o papel de cada classe no sistema.                       |
+| Integrar a lógica das classes com a interface gráfica (Java Swing)      | Revisei o fluxo entre os eventos e ações nos Controllers. |
+| Estabelecer a conexão entre a aplicação Java e o banco de dados (MySQL) | Configurei corretamente o `persistence.xml`, revisei o uso do JPA (EclipseLink), e testei a conexão local até funcionar. |
+| Utilizar corretamente o padrão DAO com JPA e EntityManager              | Reforcei o uso de DAO Genérico e consultei exemplos para entender a reutilização de métodos comuns de persistência.      |   |
+
+
 
 ## Execução
 
