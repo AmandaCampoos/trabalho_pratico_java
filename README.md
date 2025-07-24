@@ -178,6 +178,11 @@ Um curso pode ter **vários alunos** (1:N)
 - A base de dados utilizada no MySQL é definida no `persistence.xml`.
 
 ---
+
+
+<img width="811" height="317" alt="Captura de tela 2025-07-03 213230" src="https://github.com/user-attachments/assets/90035f92-7785-4070-8a7c-5ebfd47e9ace" />
+
+
 ## Organização em Camadas, DAO,Controller e DTO
 🧩 DAO (Data Access Object)
 A camada DAO é responsável pela interação direta com o banco de dados. Ela realiza as operações básicas de persistência: inserir, atualizar, remover e consultar entidades. Cada classe DAO implementa a interface GenericDAO<T>, garantindo um padrão comum para todas as entidades do sistema.
@@ -252,6 +257,12 @@ O sistema de cadastro de alunos foi desenvolvido utilizando a biblioteca Swing d
 ### Telas Principais
 ## 1. Tela de Listagem de Alunos
 
+
+
+
+<img width="1066" height="872" alt="Captura de tela 2025-07-24 140702" src="https://github.com/user-attachments/assets/42551235-7189-480a-abca-1b905825bf65" />
+
+
 Essa é a tela inicial do sistema, onde são listados todos os alunos cadastrados. O usuário pode:
 
 - Cadastrar um novo aluno clicando no botão "Novo".
@@ -265,6 +276,11 @@ Essa é a tela inicial do sistema, onde são listados todos os alunos cadastrado
 - A tabela na parte inferior exibe os dados dos alunos, como ID, Nome e Email.
 
 ## 2. Tela de Cadastro/Edição de Aluno
+
+
+<img width="1096" height="870" alt="Captura de tela 2025-07-24 140637" src="https://github.com/user-attachments/assets/2fa918bb-0bfd-4fbd-bbb5-ae6a5b90d873" />
+
+
 
 Esta tela é aberta ao clicar em "Novo" ou "Editar". Permite ao usuário preencher os dados do aluno:
 
